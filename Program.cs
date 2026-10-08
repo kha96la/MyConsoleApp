@@ -1,4 +1,11 @@
-﻿Console.WriteLine("Hello, World from c# App! 01 ");
+﻿using Microsoft.Extensions.Configuration;
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .Build();
+
+Console.WriteLine(configuration["Greeting"] ?? "Hello, World from c# App! 01");
 Console.WriteLine("Hello, World from c# App! 02 ....... ");
 Console.WriteLine("Hello, World from c# App! 03 ...... ");
 Console.WriteLine("Hello, World from c# App! 04 ");
